@@ -1,5 +1,5 @@
 /**
- * qing-module v3.0.3
+ * qing-module v1.0.0
  * http://mycolorway.github.io/qing-module
  *
  * Copyright Mycolorway Design

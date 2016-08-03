@@ -8,4 +8,8 @@ lint = ->
   gulp.src 'build/**/*.coffee'
     .pipe coffeelint()
 
-gulp.task 'default', gulp.series lint, compile, test
+gulp.task 'default', gulp.series lint, compile, test, (done) ->
+  gulp.watch 'src/**/*.coffee', gulp.series compile.coffee, test
+  gulp.watch 'src/**/*.scss', compile.sass
+  gulp.watch 'test/**/*.coffee', test
+  done()

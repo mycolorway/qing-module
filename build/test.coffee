@@ -2,7 +2,6 @@ gulp = require 'gulp'
 karma = require 'karma'
 fs = require 'fs'
 handleError = require './helpers/error'
-compile = require './compile'
 
 test = (done) ->
   server = new karma.Server
@@ -15,11 +14,6 @@ test = (done) ->
 
   server.start()
 
-gulp.task 'test', gulp.series test, (done) ->
-  gulp.watch 'src/**/*.coffee', gulp.series compile.coffee, test
-  gulp.watch 'src/**/*.scss', compile.sass
-  gulp.watch 'test/**/*.coffee', test
-
-  done()
+gulp.task 'test', test
 
 module.exports = test
