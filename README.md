@@ -120,11 +120,11 @@ Now, you are ready to go.
 
 ## Publish
 
-If you want to publish new version to npm and bower, please make sure all tests have passed before you publish new version, and you need do these preparations:
+When you want to publish new version to npm and bower, please make sure all tests have passed, and you need to do these preparations:
 
-* Add new release information in `CHANGELOG.md`. The format of markdown contents will matter, because build scripts will get version and release content from this file by regular expression. You can follow the format of the older release information.
+* Add release information in `CHANGELOG.md`. The format of markdown contents will matter, because build scripts will get version and release content from the markdown file by regular expression. You can follow the format of the older releases.
 
-* Put your [personal API tokens](https://github.com/blog/1509-personal-api-tokens) in `/.token.json`, which is required by the build scripts to request [Github API](https://developer.github.com/v3/) for creating new release:
+* Put your [personal API tokens](https://github.com/blog/1509-personal-api-tokens) in `/.token.json`(listed in `.gitignore`), which is required by the build scripts to request [Github API](https://developer.github.com/v3/) for creating new release:
 
 ```json
 {
@@ -143,4 +143,4 @@ If everything goes fine, you can see your release at [https://github.com/mycolor
 npm publish
 ```
 
-Please be careful with the last step, because you cannot delete or republish a release on npm.
+Please be careful with the last step, because you cannot delete or republish a version on npm.
