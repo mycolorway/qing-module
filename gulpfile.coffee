@@ -1,15 +1,17 @@
 gulp = require 'gulp'
-compile = require './build/compile.coffee'
-test = require './build/test.coffee'
-publish = require './build/publish.coffee'
-coffeelint = require './build/helpers/coffeelint.coffee'
+build = require 'qing-build'
+pkg = require './package.json'
 
-lint = ->
-  gulp.src 'build/**/*.coffee'
-    .pipe coffeelint()
-
-gulp.task 'default', gulp.series lint, compile, test, (done) ->
-  gulp.watch 'src/**/*.coffee', gulp.series compile.coffee, test
-  gulp.watch 'src/**/*.scss', compile.sass
-  gulp.watch 'test/**/*.coffee', test
-  done()
+build
+  gulp: gulp
+  name: pkg.name
+  githubOwner: 'mycolorway'
+  version: pkg.version
+  homepage: pkg.homepage
+  umd:
+    dependencies:
+      cjs: Object.keys(pkg.dependencies)
+      global: ['jQuery']
+      params: ['$']
+  karma:
+    dependencies: ['node_modules/jquery/dist/jquery.js'],
