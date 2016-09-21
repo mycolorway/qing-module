@@ -1,12 +1,12 @@
 /**
- * qing-module v1.0.0
+ * qing-module v1.0.1
  * http://mycolorway.github.io/qing-module
  *
  * Copyright Mycolorway Design
  * Released under the MIT license
  * http://mycolorway.github.io/qing-module/license.html
  *
- * Date: 2016-08-4
+ * Date: 2016-09-21
  */
 ;(function(root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -75,13 +75,20 @@ QingModule = (function() {
   QingModule.prototype.plugins = {};
 
   function QingModule(opts) {
-    this.opts = $.extend({}, QingModule.opts, opts);
+    this._setOptions(opts);
+    this._init();
     this.opts.plugins.forEach((function(_this) {
       return function(name) {
         return _this.plugins[name] = new QingModule.plugins[name](_this);
       };
     })(this));
   }
+
+  QingModule.prototype._setOptions = function(opts) {
+    return this.opts = $.extend({}, QingModule.opts, opts);
+  };
+
+  QingModule.prototype._init = function() {};
 
   QingModule.prototype.on = function() {
     var args, ref;

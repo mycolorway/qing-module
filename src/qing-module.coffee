@@ -59,10 +59,16 @@ class QingModule
   #
   # @return The new instance.
   constructor: (opts) ->
-    @opts = $.extend {}, QingModule.opts, opts
+    @_setOptions opts
+    @_init()
 
     @opts.plugins.forEach (name) =>
       @plugins[name] = new QingModule.plugins[name](@)
+
+  _setOptions: (opts) ->
+    @opts = $.extend {}, QingModule.opts, opts
+
+  _init: ->
 
   on: (args...) ->
     $(@).on args...

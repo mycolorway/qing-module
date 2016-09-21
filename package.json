@@ -1,6 +1,6 @@
 {
   "name": "qing-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A base class for javascript modules.",
   "homepage": "http://mycolorway.github.io/qing-module",
   "repository": {
